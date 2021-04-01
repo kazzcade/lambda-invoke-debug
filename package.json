@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "execa": "^5.0.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "find-process": "^1.4.4",
+    "graphql": "^15.5.0",
+    "portfinder": "^1.0.28",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3",
+    "yargs": "^16.2.0"
+  },
+  "name": "lambda-invoke-debug",
+  "description": "Invoke a running lambda function while debugging.",
+  "version": "1.0.0",
+  "main": "./dist/index.ts",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "build": "make && tsc",
+    "prepare": "make && npm run build"
+  },
+  "bin": {
+    "lid": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazzcade/lambda-invoke-debug.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kazzcade/lambda-invoke-debug/issues"
+  },
+  "homepage": "https://github.com/kazzcade/lambda-invoke-debug#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "@types/yargs": "^16.0.1"
+  }
+}
