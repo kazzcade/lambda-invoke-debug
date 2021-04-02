@@ -1,2 +1,2 @@
 build:
-	cd ./src/goInvoke/; go build main.go
+	cd ./goInvoke/; go build main.go

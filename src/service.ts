@@ -70,7 +70,7 @@ const service = async (options:Options) => {
                             const stat = stdout.split('\n').filter(x => pidRegex.test(x))[0];
                             const debugProcessPort = stat.match(/127.0.0.1:([\d]{1,5})/);
                             const debugPort = parseInt(debugProcessPort[1], 10);
-                            const processResult = await execa('./src/goInvoke/main', {
+                            const processResult = await execa(path.join(__dirname,'../goInvoke/main'), {
                                 input: `${JSON.stringify({
                                     timeoutMilliseconds: 5000,
                                     port: debugPort,
