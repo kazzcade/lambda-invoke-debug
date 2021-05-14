@@ -1,9 +1,9 @@
 module.exports = {
-    GetAccount:{
+    echo:{
         payload: (args, request, field) => ({
             typeName: field.operation.operation,
             fieldName: field.fieldName,
-            arguments: JSON.stringify(args, null)
+            arguments: args
         }),
         debugProcess: '__debug_bin',
         functionName: 'echo'

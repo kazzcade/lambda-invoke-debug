@@ -36,7 +36,8 @@ const service = async (options:Options) => {
 
     const configModule = require(path.resolve(options.config))
     const subscriptionRegExp = /type Subscription \{(.|\n)*\}/ig
-    const schema = buildSchema(`${scalarTypes.map(x => `scalar ${x}`).join('\n')}\n${gql.toString().replace(subscriptionRegExp,'')}`)
+    const functionRegExp = /@function.+/ig
+    const schema = buildSchema(`${scalarTypes.map(x => `scalar ${x}`).join('\n')}\n${gql.toString().replace(subscriptionRegExp,'').replace(functionRegExp, '')}`)
 
     
 
@@ -74,7 +75,7 @@ const service = async (options:Options) => {
                                 input: `${JSON.stringify({
                                     timeoutMilliseconds: 5000,
                                     port: debugPort,
-                                    payload: `${JSON.stringify(await payload(args, request, field), null)}`
+                                    payload: `${JSON.stringify(await payload(args, request, field))}`
                                 }, null)}\n`
                             })
                             if (processResult.exitCode === 0) {
